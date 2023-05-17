@@ -18,6 +18,7 @@ public class FlowTrabajar {
      */
      
     public static void main(String[] args) {
+
         try { // posa el LAF del sistema
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException
@@ -29,6 +30,7 @@ public class FlowTrabajar {
                 new FPrincipal().setVisible(true);
             }
         });
+
     }
 
 }
