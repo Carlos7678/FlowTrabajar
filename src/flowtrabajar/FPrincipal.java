@@ -5,6 +5,10 @@
 
 package flowtrabajar;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alumno
@@ -107,8 +111,16 @@ public class FPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bParesImparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParesImparesActionPerformed
-         jTextArea1.append("Pares e impares\n----------------------------------\n");
-//         mostrar(texto);
+        int numero[] = new int[10];
+        for (int i = 0; i < 10; i++) {
+          numero[i]=Integer.parseInt(JOptionPane.showInputDialog(this, "Escribe el numero "+i));
+        }
+        jTextArea1.append("Pares e impares\n----------------------------------\n");
+        try {
+            mostrar(paresImparess.mostrarParesImpares(numero));
+        } catch (NegativoException ex) {
+            Logger.getLogger(FPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bParesImparesActionPerformed
 
     private void bOrdenarArrayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenarArrayActionPerformed
