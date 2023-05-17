@@ -4,6 +4,9 @@
  */
 package flowtrabajar;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Alumno
@@ -13,8 +16,19 @@ public class FlowTrabajar {
     /**
      * @param args the command line arguments
      */
+     
     public static void main(String[] args) {
-        // TODO code application logic here
+        try { // posa el LAF del sistema
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException
+                | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FPrincipal().setVisible(true);
+            }
+        });
     }
-    
+
 }
