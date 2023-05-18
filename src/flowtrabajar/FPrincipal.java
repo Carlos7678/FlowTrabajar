@@ -14,14 +14,17 @@ import javax.swing.JOptionPane;
  * @author Alumno
  */
 public class FPrincipal extends javax.swing.JFrame {
+    private int[] numeros; // Cambiado a un arreglo unidimensional en lugar de una matriz bidimensional
 
-    /**
-     * Creates new form FPrincipal
-     */
+    // Resto del código de tu clase...
+
     public FPrincipal() {
         initComponents();
         setLocationRelativeTo(this);
+        numeros = new int[10]; // Inicializar el arreglo aquí o en algún otro lugar adecuado
     }
+
+    // Re
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,13 +114,12 @@ public class FPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bParesImparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParesImparesActionPerformed
-        int numero[] = new int[10];
-        for (int i = 0; i < 10; i++) {
-          numero[i]=Integer.parseInt(JOptionPane.showInputDialog(this, "Escribe el numero "+i));
+ for (int i = 0; i < 10; i++) {
+          numeros[i]=Integer.parseInt(JOptionPane.showInputDialog(this, "Escribe el numero "+(i+1)));
         }
         jTextArea1.append("Pares e impares\n----------------------------------\n");
         try {
-            mostrar(paresImparess.mostrarParesImpares(numero));
+            mostrar(paresImparess.mostrarParesImpares(numeros));
         } catch (NegativoException ex) {
             Logger.getLogger(FPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }

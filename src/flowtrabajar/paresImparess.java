@@ -8,7 +8,6 @@ package flowtrabajar;
  *
  * @author Alumno
  */
-import javax.swing.JOptionPane;
 
 public class paresImparess {
 
@@ -17,7 +16,7 @@ public class paresImparess {
         int numMin = Integer.MAX_VALUE;
 
         StringBuilder pares = new StringBuilder("Números pares:\n");
-        StringBuilder impares = new StringBuilder("Números impares:\n");
+        StringBuilder impares = new StringBuilder("\nNúmeros impares:\n");
 
         for (int num : numeros) {
             if (num % 2 == 0) {
@@ -35,17 +34,10 @@ public class paresImparess {
             }
 
             if (num < 0) {
-                throw new NegativoException();
+                throw new NegativoException("Se ha introducido un valor negativo.");
             }
         }
 
-        return "Pares: " + pares.toString() + "Impares: " + impares.toString();
-    }
-}
-
-class NegativoException extends Exception {
-
-    public NegativoException() {
-        super("Se ha introducido un valor negativo.");
+        return pares.toString() + impares.toString();
     }
 }
