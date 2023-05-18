@@ -114,25 +114,66 @@ public class FPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bParesImparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParesImparesActionPerformed
- for (int i = 0; i < 10; i++) {
-          numeros[i]=Integer.parseInt(JOptionPane.showInputDialog(this, "Escribe el numero "+(i+1)));
+  for (int i = 0; i < 10; i++) {
+        String input = JOptionPane.showInputDialog(this, "Escribe el numero " + i);
+        if (input == null) {
+            // El usuario ha pulsado el botón de cancelar
+            return;
         }
-        jTextArea1.append("Pares e impares\n----------------------------------\n");
         try {
-            mostrar(paresImparess.mostrarParesImpares(numeros));
-        } catch (NegativoException ex) {
-            Logger.getLogger(FPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            numeros[i] = Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Error: Debes ingresar un número válido.", "Error de entrada", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método si se produce una excepción
         }
+    }
+    jTextArea1.append("\nPares e impares\n----------------------------------\n");
+    try {
+        mostrar(paresImparess.mostrarParesImpares(numeros));
+    } catch (NegativoException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_bParesImparesActionPerformed
 
     private void bOrdenarArrayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenarArrayActionPerformed
-         jTextArea1.append("Ordenar array\n----------------------------------\n");
-//             mostrar(texto);
+         String input = JOptionPane.showInputDialog(this, "Escribe los numeros del array separados con espacios\n ej:2 45 8 9");
+    if (input == null) {
+        // El usuario ha pulsado el botón de cancelar
+        return;
+    }
+    if (input.isBlank()) {
+        JOptionPane.showMessageDialog(this, "No has introducido numeros", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    jTextArea1.append("\nOrdenar array\n----------------------------------\n");
+    try {
+        mostrar(ordenaArray.ordenaArray(input) + "\n");
+    } catch (NegativoException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Sale del método si se produce una excepción
+    }
     }//GEN-LAST:event_bOrdenarArrayActionPerformed
 
     private void bMedianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMedianaActionPerformed
-         jTextArea1.append("Mediana\n----------------------------------\n");
-//             mostrar(texto);
+         for (int i = 0; i < 10; i++) {
+        String input = JOptionPane.showInputDialog(this, "Escribe el numero " + i);
+        if (input == null) {
+            // El usuario ha pulsado el botón de cancelar
+            return;
+        }
+        try {
+            numeros[i] = Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Error: Debes ingresar un número válido.", "Error de entrada", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método si se produce una excepción
+        }
+    }
+    jTextArea1.append("\nMediana\n----------------------------------\n");
+    try {
+        mostrar(mediana.mediana(numeros));
+    } catch (NegativoException ex) {
+        Logger.getLogger(FPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_bMedianaActionPerformed
 
     /**
